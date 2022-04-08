@@ -45,7 +45,7 @@ const Registration = ({getData }) => {
 
   useEffect(()=>{
     fetchData();
-  },[studentsData]);/////[studentsData]
+  },[]);/////[studentsData]
 
   
   const handleAddClick =  (formData) => {
@@ -125,6 +125,7 @@ const Registration = ({getData }) => {
   }  
 
   const importExcel = (event) => {
+    setIsDisabled(true);
     const file = event.target.files[0];
     const reader = new FileReader();
     
@@ -148,7 +149,32 @@ const Registration = ({getData }) => {
        fetchData();  
     }
     reader.readAsBinaryString(file);
-  }
+  };
+
+  const exportExcel = () =>{
+    // changeDisable(false);
+     setIsDisabled(true);
+     console.log("isdia" , isDisabled)
+ 
+     const newData = studentsData.map((row) => {
+       delete row.__v;
+       delete row._id;
+       console.log('row',row)
+       row.days = row.days.toString();
+       return row;
+     })
+ 
+     const workSheet = XLSX.utils.json_to_sheet(newData);
+     const workBook = XLSX.utils.book_new();
+     XLSX.utils.book_append_sheet(workBook, workSheet, "students");
+     //Buffer
+     let buf = XLSX.write(workBook, {bookType:"xlsx", type:"buffer"});
+     //Binary string
+     XLSX.write(workBook, {bookType:"xlsx", type:"binary"});
+     //Download
+     XLSX.writeFile(workBook, "StudentsData.xlsx");
+ 
+    };
 
   const style = {
     position: 'absolute',
@@ -190,7 +216,7 @@ const Registration = ({getData }) => {
       </Stack>
     </div>
 
-    <StudentsTable studentData={studentsData} handleSubmit={handleSubmit} handleDeleteClick={handleDeleteClick} isDisabled={isDisabled}  handleRestartSubmit={handleRestartSubmit}/>
+    <StudentsTable studentData={studentsData} handleSubmit={handleSubmit} handleDeleteClick={handleDeleteClick} isDisabled={isDisabled}  handleRestartSubmit={handleRestartSubmit} exportExcel={exportExcel}/>
     
     <Modal
         open={open}

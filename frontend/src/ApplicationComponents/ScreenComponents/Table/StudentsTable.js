@@ -4,12 +4,14 @@ import StudentRow from './StudentRow';
 import * as XLSX from 'xlsx';
 
 
-const StudentsTable = ({ studentData , handleSubmit , handleDeleteClick , handleRestartSubmit, isDisabled}) => {
+const StudentsTable = ({ studentData , handleSubmit , handleDeleteClick , handleRestartSubmit, isDisabled, exportExcel}) => {
   const handleDelete = (studentId) =>{
     handleDeleteClick(studentId);
   }
 
-  const exportExcel = () =>{
+
+  /*const exportExcel = () =>{
+   // changeDisable(false);
     console.log("studentdata" , studentData)
 
     const newData = studentData.map((row) => {
@@ -30,7 +32,7 @@ const StudentsTable = ({ studentData , handleSubmit , handleDeleteClick , handle
     //Download
     XLSX.writeFile(workBook, "StudentsData.xlsx");
 
-   };
+   };*/
    const cellStyle={fontSize:'15pt'}
 
    const submitStyle = {backgroundColor:'rgba(0, 102, 255,0.8)', fontSize:'20px'}

@@ -136,6 +136,9 @@ async function matchClasses (students)
                                             {
                                                 //add starttime to array
                                                 classStartTimeArray.push(guide.startTime.toLocaleTimeString([], { hour: '2-digit', minute: "2-digit", hour12: false}));
+
+                                                console.log("starttime",guide.startTime.toLocaleTimeString([], { hour: '2-digit', minute: "2-digit", hour12: false}))
+
                                                 let newStartTime = new Date();
                                                 newStartTime = setTime(startHour , startMinutes);
                                                 collectiveClasses[i].startCollectiveTime = newStartTime;
@@ -306,3 +309,4 @@ async function matchClasses (students)
     return classes;
 }
 export default matchClasses;
+

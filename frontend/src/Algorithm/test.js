@@ -1,3 +1,34 @@
+const students = [
+    {
+      firstName:"Inbal",
+      lastName:"Gozland",
+      days:['Tuesday', 'Thursday'],
+      swimmingStyle:"rowing",
+      lessonType:"private"
+    },
+    {
+        firstName:"Dani",
+        lastName:"Go",
+        days:['Wednesday', 'Thursday','Sunday'],
+        swimmingStyle:"chest",
+        lessonType:"private",
+    },
+    {
+        firstName:"Loli",
+        lastName:"mimi",
+        days:['Monday', 'Thursday'],
+        swimmingStyle:"butterfly",
+        lessonType:"collective"
+    },
+]
+
+
+
+
+
+
+
+
 //give numbers to set the time
 const setTime = (hours ,minutes) => 
 {

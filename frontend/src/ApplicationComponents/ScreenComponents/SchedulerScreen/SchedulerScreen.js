@@ -45,24 +45,25 @@ const SchedulerScreen =  () => {
 
 
 
- /*const Appointment = ({
+  const Appointment = ({
     children, style, ...restProps
-    }) => (
-    classes.map(element => {
-        return(
-          <Appointments.Appointment
-           {...restProps}
-           style={{
-               ...style,
-               backgroundColor: '#FFC107',
-               borderRadius: '8px',
-           }}
-          >
-           {children}
-         </Appointments.Appointment>
-       )
-    })  
-   );*/
+  }) => (
+    classesData.map((child) =>{
+      return(
+        <Appointments.Appointment
+          {...restProps}
+          style={{
+           ...style,
+           backgroundColor: '#FFC107',
+           borderRadius: '8px',
+          }}
+        >
+         {children}
+       </Appointments.Appointment>
+      )
+    })
+    
+  );
 
 
   

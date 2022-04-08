@@ -18,6 +18,62 @@ const App = () => {
    const [guidesData, setGuidesData] = useState([]);
 
 
+  const getAllDaysInMonth = (year, month) => {
+    const date = new Date(year, month, 1);
+  
+    const dates = [];
+  
+    while (date.getMonth() === month) {
+      dates.push(new Date(date));
+      date.setDate(date.getDate() + 1);
+    }
+  
+    return dates;
+  }
+  
+  const setDay = (hour,minutes,dayNum) =>{
+     const curDate = new Date();
+     const numOfDayMonth = curDate.getDate();
+     const now = new Date();
+     const daysOfMonth = getAllDaysInMonth(now.getFullYear(), now.getMonth());
+
+     let newDate = new Date();
+     
+     for(let i = 0; i <= 4; i++){
+      for(let j = numOfDayMonth; j < numOfDayMonth + 7; j++){
+        if(dayNum === i){
+          if(daysOfMonth[j-1].getDay() === i){
+              newDate = new Date(daysOfMonth[j-1].setDate(j));
+              //console.log("funnewdate",newDate)
+              newDate.setHours(hour);
+             // console.log("funnewdate",newDate)
+              newDate.setMinutes(minutes);
+          }
+        }
+      }
+     }
+     return newDate;
+  }
+
+  const getDayNum = (dayName) =>{
+      if(dayName === 'Sunday') {
+        return 0;
+      }
+      else if(dayName === 'Monday'){
+        return 1;
+      }
+      else if(dayName === 'Tuesday'){
+        return 2;
+      }
+      else if(dayName === 'Wednesday'){
+        return 3;
+      }
+      else if(dayName === 'Thursday'){
+        return 4;
+      }
+  }
+
+
   const getClassesData = async (studentsData) => {
 
     console.log("appstudentdata" , studentsData)
@@ -50,9 +106,23 @@ const App = () => {
 
     newClasses.forEach(async (cl) => {
       if(cl.classType !== "error"){
-        const isoClassStart = new Date(cl.startTime.getTime() - cl.startTime.getTimezoneOffset() * 60000).toISOString();
-        const isoClassEnd = new Date(cl.endTime.getTime() - cl.endTime.getTimezoneOffset() * 60000).toISOString();
+        //const isoClassStart = new Date(cl.startTime.getTime() - cl.startTime.getTimezoneOffset() * 60000).toISOString();
+       // const isoClassEnd = new Date(cl.endTime.getTime() - cl.endTime.getTimezoneOffset() * 60000).toISOString();
 
+      
+        const dayNum = getDayNum(cl.day);
+  
+        let startHour = (new Date(cl.startTime)).getHours();
+        let startMinutes = (new Date(cl.startTime)).getMinutes();
+        const newStartDate = setDay(startHour,startMinutes,dayNum)
+
+        let endtHour = (new Date(cl.endTime)).getHours();
+        let endtMinutes = (new Date(cl.endTime)).getMinutes();
+        const newEndtDate = setDay(endtHour,endtMinutes,dayNum)
+       
+        const isoClassStart = newStartDate.toISOString();
+        const isoClassEnd = newEndtDate.toISOString();
+        
         const classData = {
           startDate: isoClassStart , 
           endDate: isoClassEnd,
