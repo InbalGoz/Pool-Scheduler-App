@@ -1,7 +1,6 @@
 import React , { useState , useEffect } from 'react';
-import {Avatar  ,Button, CssBaseline ,FormControlLabel , TextField ,Checkbox ,MenuItem, Link , Grid ,Box , Typography ,Container , InputLabel, FormControl, Select, Paper} from '@mui/material'
+import { Button, CssBaseline ,FormControlLabel , TextField ,Checkbox ,MenuItem, Grid ,Box , Typography ,Container , InputLabel, FormControl, Select, Paper} from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 const days = ['Sunday', 'Monday' , 'Tuesday', 'Wednesday', 'Thursday'];
 let newDays = [];
@@ -47,7 +46,6 @@ const RegistrationForm = ({ handleAddClick , func}) => {
   });
 
   const [isDisabled , setIsDisabled] = useState(true);
-  const [isContinue , setIsContinue] = useState(false);
 
   const [formData , setFormData] = useState([{
     firstName: '', 
@@ -205,7 +203,7 @@ const RegistrationForm = ({ handleAddClick , func}) => {
         >
           
           <Typography component="h1" variant="h5" sx={{color:'#8A2BE2' , fontWeight:'bold'}}>
-            Registration Form
+            Registration
           </Typography>
 
           <Box component="form" noValidate  sx={{ mt: 3 }}>

@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from 'react';
-import { Button , Stack, Paper , Container, Typography} from '@mui/material';
+import { Stack, Paper , Container} from '@mui/material';
 import { Grid, Table, TableHeaderRow } from '@devexpress/dx-react-grid-material-ui';
 import { styled } from '@mui/material/styles';
 import {
@@ -9,8 +9,8 @@ import {
 import axios from 'axios';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
+ // backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+ // ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
@@ -43,15 +43,33 @@ const GuidesSchedulerScreen =  ({guideClasses}) => {
   const fetchGuidesClassesData = async () => {
     const { data } = await axios.get('http://localhost:3001/guidesclasses');
     console.log('guideclases' , data)
-    setGuidesClassesData(data);//fetch all students
+
+    let newData = [];
+    data.forEach(element => {
+      console.log("element", element.name)
+        const index = data.indexOf(element);
+        newData.push({
+          classNumber: index +1,
+          name: element.name,
+          classType: element.classType,
+          swimmingStyle: element.swimmingStyle,
+          day: element.day,
+          startTime: element.startTime,
+          endTime: element.endTime,
+          students: element.students,
+        })
+        console.log("element", element)
+    });
+    setGuidesClassesData(newData);//fetch all students
    }
 
   useEffect(()=>{
     fetchGuidesClassesData();
   },[]);/////[guidesClassesData]
 
-  const linkStyle ={ textDecoration: 'none', color:'#000000'};
+  //const linkStyle ={ textDecoration: 'none', color:'#000000'};
   const [columns] = useState([
+    { name: 'classNumber', title: 'Class Number' },
       { name: 'name', title: 'Name' },
       { name: 'classType', title: 'Class Type' },
       { name: 'swimmingStyle', title: 'Swimming Style' },

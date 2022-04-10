@@ -1,7 +1,7 @@
 import React, { useState , useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import {Box , Button ,Stack , Container, Typography} from '@mui/material';
+import {Stack , Container} from '@mui/material';
 import { Grid, Table, TableHeaderRow } from '@devexpress/dx-react-grid-material-ui';
 import {
   SortingState,
@@ -10,8 +10,8 @@ import {
 import axios from 'axios';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
+ // backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+ // ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
@@ -38,7 +38,6 @@ const comparePriority = (a, b) => {
 };
 
 const JoniClasses = () => {
-  const linkStyle ={ textDecoration: 'none', color: 'inherit' }
   const [joniClassesData, setJoniClassesData] = useState([]);
 
   const fetchJoniClassesData = async () => {
@@ -50,6 +49,7 @@ const JoniClasses = () => {
       console.log("element", element.name)
       if(element.name === 'Joni'){
         newData.push({
+          classNumber: '',
           name: element.name,
           classType: element.classType,
           swimmingStyle: element.swimmingStyle,
@@ -61,6 +61,9 @@ const JoniClasses = () => {
         console.log("element", element)
       }
     });
+    newData.map((element,index) => (
+      element.classNumber = index +1
+    ))
     console.log('joni' , data)
     setJoniClassesData(newData);//fetch all students
    }
@@ -70,6 +73,7 @@ const JoniClasses = () => {
   },[]);/////[studentsData]
 
   const [columns] = useState([
+    { name: 'classNumber', title: 'Class Number' },
       { name: 'name', title: 'Name' },
       { name: 'classType', title: 'Class Type' },
       { name: 'swimmingStyle', title: 'Swimming Style' },

@@ -38,7 +38,6 @@ const comparePriority = (a, b) => {
 };
 
 const YotamClasses = () => {
-  const linkStyle ={ textDecoration: 'none', color: 'inherit' };
   const [yotamClassesData, setYotamClassesData] = useState([]);
 
   const fetchYotamClassesData = async () => {
@@ -48,7 +47,9 @@ const YotamClasses = () => {
     let newData = [];
     data.forEach(element => {
       if(element.name === 'Yotam'){
+        
         newData.push({
+          classNumber: '', 
           name: element.name,
           classType: element.classType,
           swimmingStyle: element.swimmingStyle,
@@ -60,6 +61,10 @@ const YotamClasses = () => {
         console.log("element", element)
       }
     });
+
+    newData.map((element,index) => (
+      element.classNumber = index +1
+    ));
     
     setYotamClassesData(newData);//fetch all students
    }
@@ -69,6 +74,7 @@ const YotamClasses = () => {
   },[]);/////[studentsData]
 
   const [columns] = useState([
+      { name: 'classNumber', title: 'Class Number' },
       { name: 'name', title: 'Name' },
       { name: 'classType', title: 'Class Type' },
       { name: 'swimmingStyle', title: 'Swimming Style' },

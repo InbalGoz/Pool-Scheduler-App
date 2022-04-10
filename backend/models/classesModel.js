@@ -19,7 +19,5 @@ const classSchema = mongoose.Schema({
 })
 
 
-
-
 const Classes = mongoose.model('Classes' , classSchema);
 export default Classes;
