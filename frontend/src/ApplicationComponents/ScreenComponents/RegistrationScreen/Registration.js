@@ -45,7 +45,7 @@ const Registration = ({getData }) => {
 
   useEffect(()=>{
     fetchData();
-  },[]);/////[studentsData]
+  },[studentsData]);/////[studentsData]
 
   
   const handleAddClick =  (formData) => {

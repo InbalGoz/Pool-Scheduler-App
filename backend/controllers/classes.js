@@ -22,14 +22,14 @@ export const sendClasses =  (req, res) => {
     const endDate = req.body.endDate;
     const title = req.body.title;
     const classType = req.body.classType;
-    const startcolorDate = req.body.color;
+    const color = req.body.color;
 
     const newClasses = new ClassesModel({
         startDate,
         endDate,
         title,
         classType,
-        startcolorDate,
+        color,
     });
 
     try {

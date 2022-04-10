@@ -20,6 +20,20 @@ const students = [
         swimmingStyle:"butterfly",
         lessonType:"collective"
     },
+    {
+        firstName:"Loli",
+        lastName:"mimi",
+        days:['Monday', 'Thursday'],
+        swimmingStyle:"butterfly",
+        lessonType:"collective"
+    },
+    {
+        firstName:"liraz",
+        lastName:"shimi",
+        days:['Monday', 'Thursday'],
+        swimmingStyle:"butterfly",
+        lessonType:"collective"
+    },
 ]
 
 

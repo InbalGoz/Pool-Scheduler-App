@@ -1,5 +1,7 @@
 import React from 'react';
 import Paper from '@mui/material/Paper';
+import {EditIcon , DeleteIcon} from '@mui/icons-material';
+import {Grid, IconButton} from '@mui/material';
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
@@ -35,7 +37,6 @@ const SchedulerScreen =  () => {
 
 
   useEffect(()=>{
-    console.log('useeffect_2')
     fetchClassesData();
   },[]);/////[classesData]*/
 
@@ -43,30 +44,21 @@ const SchedulerScreen =  () => {
      setCurrentDate(currentDate);
   }
 
+ /*const Appointment = ({ children, style, data, ...restProps }) => (
+    <Appointments.Appointment
+      {...restProps}
+      style={{
+        ...style,
+        backgroundColor: data.color
+      }}
+    >
+      {children}
+    </Appointments.Appointment>
+  );*/
+  //appointmentComponent={Appointment}
 
 
-  const Appointment = ({
-    children, style, ...restProps
-  }) => (
-    classesData.map((child) =>{
-      return(
-        <Appointments.Appointment
-          {...restProps}
-          style={{
-           ...style,
-           backgroundColor: '#FFC107',
-           borderRadius: '8px',
-          }}
-        >
-         {children}
-       </Appointments.Appointment>
-      )
-    })
-    
-  );
 
-
-  
   return(
       <Paper>
          <Scheduler
@@ -105,3 +97,5 @@ const SchedulerScreen =  () => {
   };
 
 export default SchedulerScreen;
+
+//appointmentComponent={Appointment}

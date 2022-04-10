@@ -122,6 +122,8 @@ const App = () => {
        
         const isoClassStart = newStartDate.toISOString();
         const isoClassEnd = newEndtDate.toISOString();
+
+        console.log("color",cl.color)
         
         const classData = {
           startDate: isoClassStart , 

@@ -98,7 +98,7 @@ async function matchClasses (students)
                                         day: day,
                                         startTime: newStartTime , 
                                         endTime: newEndTime,
-                                        color:'#ff7f50',
+                                        color:'#8FBC8F',
                                         guideName: guide.firstName,
                                         studentName: student.firstName,
                                         swimmingStyle: student.swimmingStyle,
@@ -163,7 +163,7 @@ async function matchClasses (students)
                                         day: day,
                                         startTime: newStartTime , 
                                         endTime: newEndTime,
-                                        color:'#ff7f50',
+                                        color:'#8FBC8F',
                                         guideName: guide.firstName,
                                         studentName: student.firstName,
                                         swimmingStyle: student.swimmingStyle,
@@ -229,7 +229,7 @@ async function matchClasses (students)
                   day: collectiveClasses[i].collectiveDay,
                   startTime: collectiveClasses[i].startCollectiveTime,
                   endTime: collectiveClasses[i].endCollectiveTime,
-                  color: '#5f9ea0',
+                  color: '#FFC107',
                   guideName: collectiveClasses[i].guideName,
                   studentName: collectiveClasses[i].studentsCollective.map((student) => 
                   student.firstName + ' '
